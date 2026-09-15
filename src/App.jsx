@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import OrderLineDashboard from './OrderLineDashboard';
 import DashBoard from './App/Container/DashBoard/DashBoard';
 import OrderCreationScreen from "./App/Container/OrderPlacing/OrderCreationScreen"
@@ -322,8 +323,6 @@ export default function App() {
         }
         {/* <button onClick={() => setIsOpen(false)}>Close</button> */}
       </div>
-        <OrderCreationScreen/>
-      <OrderLineDashboard/>
     </div>
   );
 }

@@ -36,10 +36,28 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
 import './index.css'; // Optional: keep or delete if you want custom global styles
-
+import {  createBrowserRouter, RouterProvider } from 'react-router-dom';
+import OrderLineDashboard from './OrderLineDashboard.jsx';
+import OrderCreationScreen from './App/Container/OrderPlacing/OrderCreationScreen.jsx';
+import ShopHours from './App/Container/Settings/ShopHours/ShopHours.jsx';
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <OrderLineDashboard/>,
+    // errorElement: <NotFound />, // Handles 404s or app crashes
+  },
+  {
+    path: '/create',
+    element: <OrderCreationScreen/>,
+  },
+  {
+    path: "/hours",
+    element: <ShopHours/>
+  }
+]);
 const root = createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router}/>
   </React.StrictMode>
 );

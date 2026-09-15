@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import PaymentMethodScreen from './PaymentMethodScreen';
-
+import { Link } from 'react-router-dom';
 // ----------------------------------------------------------------------------
 // Mock data — swap for your menu API. `image` accepts a remote URL; leave it
 // null to fall back to the emoji tile (handy for placeholder/demo content).
@@ -182,6 +182,14 @@ const ORDER_TYPE_LABELS = {
 // ----------------------------------------------------------------------------
 
 const money = (n) => `£${n.toFixed(2)}`;
+
+function ChevronLeftIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+      <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
 
 function resolveSelectedModifiers(item, selections) {
   const resolved = [];
@@ -698,6 +706,9 @@ export default function OrderCreationScreen({ orderInfo }) {
   return (
     <div style={styles.safeArea}>
       <div style={styles.container}>
+        <button style={styles.backButton} aria-label="Go back">
+            <Link to="/"><ChevronLeftIcon /></Link>
+          </button>
         {/* Left: categories */}
         <CategoryList
           categories={CATEGORIES}

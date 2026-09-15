@@ -23,6 +23,7 @@ import {
   Bell,
 } from "lucide-react";
 
+import { Link } from "react-router-dom";
 // ----------------------------------------------------------------------------
 // Mock data — one full "detail" object per queue order so any card can be
 // selected and the middle/right panels update to match it.
@@ -295,7 +296,7 @@ function TopBar() {
               </span>
             </div>
             <span className="text-sm font-medium text-gray-500">Inventory</span>
-            <span className="text-sm font-medium text-gray-500">Hours</span>
+            <span className="text-sm font-medium text-gray-500"> <Link to="/hours">Hours</Link></span>
           </nav>
         </div>
 
@@ -370,6 +371,9 @@ function SubHeader() {
         </button>
         <button onClick={()=>placeOrder("ubereats")} className="cursor-pointer border-b-2 border-emerald-500 pb-2 -mb-2.5 text-sm font-semibold text-emerald-600">
           Uber Eats
+        </button>
+        <button className="cursor-pointer border-b-2 border-emerald-500 pb-2 -mb-2.5 text-sm font-semibold text-emerald-600">
+          <Link to="/create">New Order </Link>
         </button>
       </div>
 
