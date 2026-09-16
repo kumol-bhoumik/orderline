@@ -40,6 +40,11 @@ import {  createBrowserRouter, RouterProvider } from 'react-router-dom';
 import OrderLineDashboard from './OrderLineDashboard.jsx';
 import OrderCreationScreen from './App/Container/OrderPlacing/OrderCreationScreen.jsx';
 import ShopHours from './App/Container/Settings/ShopHours/ShopHours.jsx';
+import Category from './App/Container/Settings/Menu/Category/Category.jsx';
+import Items from './App/Container/Settings/Menu/Items/Items.jsx';
+import CreateCategory from './App/Container/Settings/Menu/Category/CreateCategory.jsx';
+import ItemList from './App/Container/Settings/Menu/Items/ItemList.jsx';
+import AddItem from './App/Container/Settings/Menu/Items/AddItem.jsx';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -53,6 +58,22 @@ const router = createBrowserRouter([
   {
     path: "/hours",
     element: <ShopHours/>
+  },
+  {
+    path: "/menu",
+    element: <Category />
+  },
+  {
+    path: "/item",
+    element: <ItemList/>
+  },
+  {
+    path: "/item/add",
+    element: <AddItem/>
+  },
+  {
+    path: "/create/category",
+    element: <CreateCategory/>
   }
 ]);
 const root = createRoot(document.getElementById('root'));

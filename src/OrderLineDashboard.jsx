@@ -295,7 +295,7 @@ function TopBar() {
                 1
               </span>
             </div>
-            <span className="text-sm font-medium text-gray-500">Inventory</span>
+            <span className="text-sm font-medium text-gray-500"><Link to="/menu">Inventory</Link></span>
             <span className="text-sm font-medium text-gray-500"> <Link to="/hours">Hours</Link></span>
           </nav>
         </div>
