@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Plus,
   X,
@@ -93,10 +94,11 @@ function Field({ label, required, hint, children }) {
 }
 
 
-export default function ItemForm({ modifiersList, onSave, categories }) {
-  const [form, setForm] = useState(emptyItemForm());
+export default function ItemForm({ modifiersList, onSave, categories, item }) {
+  const [form, setForm] = useState(item ? item : emptyItemForm());
   const [error, setError] = useState(null);
-
+  const [newItem, setNewItem] = useState(!item);
+  const navigate = useNavigate();
   const modifierOptions = modifiersList.map((m) => ({ id: m.id, label: m.title.en || m.id }));
 
   const handleTitleBlurAutoId = () => {
@@ -119,7 +121,7 @@ export default function ItemForm({ modifiersList, onSave, categories }) {
     });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
     if (!form.id.trim()) return setError("Item ID is required.");
     if (!form.title.en?.trim()) return setError("An English title is recommended before saving.");
     const priceFields = ["collection", "dine_in", "walk_in", "delivery", "default"];
@@ -133,8 +135,9 @@ export default function ItemForm({ modifiersList, onSave, categories }) {
     }
 
     setError(null);
-    console.log(form);
-    onSave(form);
+    //console.log(form);
+    let response = await onSave(form, newItem);
+    console.log(response)
     //setForm(emptyItemForm());
   };
 

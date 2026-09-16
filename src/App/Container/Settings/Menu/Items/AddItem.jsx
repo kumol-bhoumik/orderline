@@ -40,8 +40,18 @@ export default function AddItem(){
     //     }
     // };
 
-    const saveItem = async()=>{
-        console.log("item saved")
+    const saveItem = async(data)=>{
+        try{
+            let response = await axios.post(`http://localhost:8080/api/v1/menu/items/menu/${menuId}/items`, data);
+            if(response.status !== 200){
+                throw new Error(`Failed to create new items`);
+            }
+            return true
+            console.log(response.data);
+        } catch(error){
+            return error.message;
+            console.error("Error fetching items:", error);
+        }
     }
     const loadModifiers = async () => {
         try {
@@ -57,6 +67,6 @@ export default function AddItem(){
         }
     };
     return (<ItemLayout>
-        <ItemForm modifiersList={modifiers} categories={categories} onSave={()=>saveItem()}/>
+        <ItemForm modifiersList={modifiers} categories={categories} onSave={(data)=>saveItem(data)}/>
     </ItemLayout>)
 }
